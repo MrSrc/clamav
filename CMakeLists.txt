@@ -1061,6 +1061,10 @@ if(NOT ENABLE_LIBCLAMAV_ONLY)
         add_subdirectory( clamd )
 
         add_subdirectory( clamdscan )
+        
+        add_subdirectory( streamhashd )
+
+        add_subdirectory( streamhash )
 
         if(C_LINUX AND ENABLE_CLAMONACC)
             add_subdirectory( clamonacc )
