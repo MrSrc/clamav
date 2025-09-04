@@ -4,7 +4,7 @@ add_executable(streamhash)
 
 target_sources(streamhash
     PRIVATE
-        streamhash.c
+        streamhash_simple.c
         streamhash_client.c
         streamhash_client.h
         streamhash_protocol.c
