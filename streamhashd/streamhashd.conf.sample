@@ -1,0 +1,242 @@
+##
+## Example config file for StreamHash daemon
+##
+
+# Comment or remove the line below.
+Example
+
+# Path to a local socket file the daemon will listen on.
+# Default: disabled (must be specified by a user)
+#LocalSocket /var/run/streamhash/streamhash.ctl
+
+# Sets the group ownership on the unix socket.
+# Default: disabled (the primary group of the user running streamhash)
+#LocalSocketGroup virusgroup
+
+# Sets the permissions on the unix socket to the specified mode.
+# Default: disabled (socket is world accessible)
+#LocalSocketMode 660
+
+# Remove stale socket after unclean shutdown.
+# Default: yes
+#FixStaleSocket yes
+
+# TCP port address.
+# Default: no
+TCPSocket 3399
+
+# TCP address.
+# By default we bind to INADDR_ANY, probably not wise.
+# Enable the following to provide some degree of protection
+# from the outside world. This option can be specified multiple
+# times if you want to listen on multiple IPs. IPv6 is now supported.
+# Default: no
+#TCPAddr 127.0.0.1
+
+# Maximum length the queue of pending connections may grow to.
+# Default: 200
+#MaxConnectionQueueLength 30
+
+# Clamd uses FTP-like protocol to receive data from its clients.
+# The default timeout should suffice, but if you choose to use
+# TCP sockets, you may want to adjust the timeout for better
+# performance.
+# Default: 120
+#ReadTimeout 300
+
+# This option specifies the time (in seconds) after which clamd
+# should timeout if a client doesn't provide any initial command
+# after connecting.
+# Default: 30
+#CommandReadTimeout 30
+
+# This option specifies how long to wait (in miliseconds) if the
+# send buffer is full.
+# Keep this value low to prevent clamd hanging
+# Default: 500
+#SendBufTimeout 200
+
+# Maximum number of threads running at the same time.
+# Default: 10
+#MaxThreads 20
+
+# Waiting for data from a client socket will timeout after this time
+# (seconds).
+# Default: 120
+#ReadTimeout 180
+
+# This option specifies the time (in seconds) after which clamd
+# should timeout if a client doesn't provide any initial command
+# after connecting.
+# Default: 5
+#CommandReadTimeout 30
+
+# Path to the database directory.
+# Default: hardcoded (depends on installation options)
+#DatabaseDirectory /var/lib/clamav
+
+# Only load the official signatures published by the ClamAV project.
+# Default: no
+#OfficialDatabaseOnly no
+
+# The daemon can debug and log to a fixed path logfile.
+# Default: disabled
+#LogFile /var/log/streamhash.log
+
+# By default the log file is locked for writing - the lock protects
+# against running clamd multiple times (if want to run another clamd,
+# please copy the configuration file, change the LogFile variable, and
+# run clamd with --config-file option).
+# This option disables log file locking.
+# Default: no
+#LogFileUnlock yes
+
+# Maximum size of the log file.
+# Value of 0 disables the limit.
+# You may use 'M' or 'm' for megabytes (1M = 1m = 1048576 bytes)
+# and 'K' or 'k' for kilobytes (1K = 1k = 1024 bytes). To specify the size
+# in bytes, just don't use modifiers. If LogFileMaxSize is enabled, log
+# rotation (the LogRotate option) will always be enabled.
+# Default: 1M
+#LogFileMaxSize 2M
+
+# Log time with each message.
+# Default: no
+#LogTime yes
+
+# Also log clean files. Useful in debugging but drastically increases the
+# log size.
+# Default: no
+#LogClean no
+
+# Use system logger (can work together with LogFile).
+# Default: no
+#LogSyslog yes
+
+# Specify the type of syslog messages - please refer to 'man syslog'
+# for facility names.
+# Default: LOG_LOCAL6
+#LogFacility LOG_MAIL
+
+# Enable verbose logging.
+# Default: no
+#LogVerbose yes
+
+# Enable log rotation. Always enabled when LogFileMaxSize is enabled.
+# Default: no
+#LogRotate yes
+
+# Enable Portable Executable scanning.
+# Default: yes
+#ScanPE yes
+
+# Enable Executable and Linking Format scanning.
+# Default: yes
+#ScanELF yes
+
+# This option sets the maximum number of partitions of a raw disk image to be scanned.
+# Raw disk images with more partitions than this value will have up to the value
+# number partitions scanned. Negative values are not allowed.
+# Note: setting this limit too high may result in severe damage or impact performance.
+# Default: 50
+#MaxPartitions 128
+
+# This option sets the maximum number of partitions of a raw disk image to be scanned.
+# Raw disk images with more partitions than this value will have up to the value
+# number partitions scanned. Negative values are not allowed.
+# Note: setting this limit too high may result in severe damage or impact performance.
+# Default: 50
+#MaxIconsPE 200
+
+# This option sets the maximum recursive calls to HWP3 parsing function.
+# HWP3 files using more than this limit will be terminated and alert the user.
+# Scans will be unable to scan inside these files, but the files will still be
+# scanned depending on what kind of files they are.
+# Negative values are not allowed.
+# WARNING: setting this limit too high may result in severe damage or impact performance.
+# Default: 16
+#MaxRecHWP3 10000
+
+# Run as another user (clamd must be started by root for this option to work)
+# Default: don't drop privileges
+#User clamav
+
+# Stop daemon when libclamav reports out of memory condition.
+# Default: no
+#ExitOnOOM yes
+
+# Don't fork into background.
+# Default: no
+Foreground no
+
+# Enable debug messages in libclamav.
+# Default: no
+#Debug yes
+
+# Do not remove temporary files (for debug purposes).
+# Default: no
+#LeaveTemporaryFiles yes
+
+# Run the daemon in the foreground (do not fork).
+# Default: no
+#Foreground yes
+
+# Initialize supplementary group access (clamd must be started by root).
+# Default: no
+#AllowSupplementaryGroups no
+
+# Pid file.
+# Default: disabled
+#PidFile /var/run/streamhash.pid
+
+# Temporary directory.
+# Default: system temporary directory
+#TemporaryDirectory /var/tmp
+
+# Database directory.
+# Default: hardcoded
+#DatabaseDirectory /var/lib/streamhash
+
+# Path to a local socket file the daemon will listen on.
+# Default: disabled
+#LocalSocket /var/run/streamhash/streamhash.ctl
+
+# Sets the group ownership on the unix socket.
+# Default: disabled (the primary group of the user running streamhash)
+#LocalSocketGroup streamhash
+
+# Sets the permissions on the unix socket to the specified mode.
+# Default: disabled (socket is world accessible)
+#LocalSocketMode 660
+
+# Remove stale socket after unclean shutdown.
+# Default: yes
+#FixStaleSocket yes
+
+# Disable stderr logging.
+# Default: no
+#LogFileUnlock no
+
+##
+## Hashing options
+##
+
+# Enable computation of basic hashes (MD5, SHA1, SHA256, SHA3)
+# Default: yes
+#EnableBasicHashes yes
+
+# Enable computation of fuzzy hashes (ssdeep, TLSH, simhash64)
+# Default: yes
+#EnableFuzzyHashes yes
+
+# Enable file property extraction
+# Default: yes
+#EnableFileProperties yes
+
+# Maximum file size to process (in bytes)
+# Default: 100M
+#MaxFileSize 104857600
+
+# Maximum scan time per file (in seconds)
+# Default: 120
+#MaxScanTime 120
